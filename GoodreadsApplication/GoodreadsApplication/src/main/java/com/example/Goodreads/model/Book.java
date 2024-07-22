@@ -1,13 +1,13 @@
-package com.example.GoodreadsApplication;
+package com.example.Goodreads.model;
 
 public class Book {
     private int id;
-    private String BookName;
+    private String Name;
     private String ImageUrl;
 
-    public Book(int id,String BookName,String ImageUrl){
+    public Book(int id,String Name,String ImageUrl){
         this.id=id;
-        this.BookName=BookName;
+        this.Name=Name;
         this.ImageUrl=ImageUrl;        
     }
 
@@ -19,12 +19,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getBookName() {
-        return BookName;
+    public String getName() {
+        return Name;
     }
 
-    public void setBookName(String bookName) {
-        BookName = bookName;
+    public void setBookName(String Name) {
+        Name = Name;
     }
 
     public String getImageUrl() {

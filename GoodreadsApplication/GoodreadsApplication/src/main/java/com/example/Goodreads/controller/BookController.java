@@ -1,7 +1,8 @@
-package com.example.GoodreadsApplication;
+package com.example.Goodreads.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +11,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Goodreads.model.Book;
+ import com.example.Goodreads.service.Bookh2Service;
+
 @RestController
 public class BookController {
-    BookService bs =new BookService();
-
+   // BookService bs =new BookService();
+@Autowired
+ public Bookh2Service  bs;
 
 @GetMapping("/")
 public String welcome(){
@@ -21,9 +26,10 @@ public String welcome(){
 }
 
      @GetMapping("/books")
-    public   ArrayList<Book>    getBooks() {
+    public  ArrayList<Book>  getBooks() {
         return   bs.getBooks()   ;
     }
+
 
     @GetMapping("/books/{bookId}")
     public Book getBookById(@PathVariable("bookId") int bookId) {
@@ -32,7 +38,7 @@ public String welcome(){
 
     @PostMapping("/books") 
     public Book AddBook(@RequestBody Book book){
-        return bs.AddBook(book);
+        return bs.addBook(book);
     }
 
     @PutMapping("/books/{bookId}")

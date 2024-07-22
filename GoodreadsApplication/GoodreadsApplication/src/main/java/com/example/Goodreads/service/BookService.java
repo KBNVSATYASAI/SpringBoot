@@ -1,4 +1,4 @@
-package com.example.GoodreadsApplication;
+package com.example.Goodreads.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -6,8 +6,11 @@ import java.util.HashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.GoodreadsApplication.Book;;
-public class BookService implements BookRepository{
+import com.example.Goodreads.model.Book;
+import com.example.Goodreads.repository.BookRepository;
+
+ 
+ public class BookService implements BookRepository{
   private  HashMap<Integer,Book> hmap= new HashMap<>();
   int uniqueId=3;
 
@@ -36,21 +39,22 @@ if(book == null) {
   return book;
 }
 
-public Book AddBook(Book book){
+@Override
+public Book addBook(Book book){
     book.setId(uniqueId);
     hmap.put(uniqueId, book);
     uniqueId +=1;
     return book;
 
 }
-
+@Override
 public Book updateBook(int bookId,Book book) {
     Book existingBook=hmap.get(bookId);
     if(existingBook == null) {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-    if(book.getBookName() != null) {
-        existingBook.setBookName(book.getBookName());
+    if(book.getName() != null) {
+        existingBook.setBookName(book.getName());
     }
     if(book.getImageUrl() != null) {
         existingBook.setImageUrl(book.getImageUrl());
@@ -58,6 +62,7 @@ public Book updateBook(int bookId,Book book) {
     return book;
 }
 
+@Override
 public void DeleteBook(int bookId) {
     Book existbook = hmap.get(bookId);
     if(existbook == null) {
