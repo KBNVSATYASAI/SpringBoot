@@ -1,13 +1,35 @@
 package com.example.Goodreads.model;
 
+import jakarta.persistence.Column;
+
+//import org.springframework.data.annotation.Id;
+//import org.springframework.data.relational.core.mapping.Column;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "book")
 public class Book {
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String Name;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "imageurl")
     private String ImageUrl;
 
-    public Book(int id,String Name,String ImageUrl){
+    public Book() {
+
+    }
+
+    public Book(int id,String name,String ImageUrl){
         this.id=id;
-        this.Name=Name;
+        this.name=name;
         this.ImageUrl=ImageUrl;        
     }
 
@@ -19,12 +41,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getName() {
-        return Name;
+    public String getname() {
+        return name;
     }
 
-    public void setBookName(String Name) {
-        Name = Name;
+    public void setBookname(String name) {
+        this.name = name;
     }
 
     public String getImageUrl() {

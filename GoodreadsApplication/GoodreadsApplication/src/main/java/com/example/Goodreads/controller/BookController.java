@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Goodreads.model.Book;
- import com.example.Goodreads.service.Bookh2Service;
+//import com.example.Goodreads.repository.BookJpaRepository;
+import com.example.Goodreads.service.BookJpaService;
+//import com.example.Goodreads.service.Bookh2Service;
 
 @RestController
 public class BookController {
    // BookService bs =new BookService();
 @Autowired
- public Bookh2Service  bs;
+ public BookJpaService  bs;
 
 @GetMapping("/")
 public String welcome(){

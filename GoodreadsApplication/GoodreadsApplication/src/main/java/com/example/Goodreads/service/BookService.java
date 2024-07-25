@@ -53,8 +53,8 @@ public Book updateBook(int bookId,Book book) {
     if(existingBook == null) {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-    if(book.getName() != null) {
-        existingBook.setBookName(book.getName());
+    if(book.getname() != null) {
+        existingBook.setBookname(book.getname());
     }
     if(book.getImageUrl() != null) {
         existingBook.setImageUrl(book.getImageUrl());

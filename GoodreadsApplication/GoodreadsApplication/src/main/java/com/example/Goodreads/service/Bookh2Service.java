@@ -35,18 +35,18 @@ public Book getBookById(int bookId) {
  }
 @Override
 public Book addBook(Book book) {
-    db.update("insert into book(name, ImageUrl) values (?, ?)", book.getName(), book.getImageUrl());
+    db.update("insert into book(name, ImageUrl) values (?, ?)", book.getname(), book.getImageUrl());
 
     Book savedBook = db.queryForObject("select * from book where name = ? and ImageUrl = ?",
-                                        new BookRowMapper(), book.getName(), book.getImageUrl());
+                                        new BookRowMapper(), book.getname(), book.getImageUrl());
 
 
     return savedBook;
 }
 @Override
 public Book updateBook(int bookId, Book book) {
-    if(book.getName() != null) {
-    db.update("update book set Name = ? where id = ?" , book.getName(),bookId);
+    if(book.getname() != null) {
+    db.update("update book set Name = ? where id = ?" , book.getname(),bookId);
     
     }
     if(book.getImageUrl() != null) {
